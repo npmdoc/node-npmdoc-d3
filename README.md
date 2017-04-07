@@ -1,11 +1,13 @@
-# api documentation for  [d3 (v4.7.4)](https://d3js.org)  [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-d3.svg)](https://travis-ci.org/npmdoc/node-npmdoc-d3)
+# api documentation for  [d3 (v4.7.4)](https://d3js.org)  [![npm package](https://img.shields.io/npm/v/npmdoc-d3.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-d3) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-d3.svg)](https://travis-ci.org/npmdoc/node-npmdoc-d3)
 #### Data-Driven Documents
 
 [![NPM](https://nodei.co/npm/d3.png?downloads=true)](https://www.npmjs.com/package/d3)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-d3/build/screen-capture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-d3_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-d3/build..beta..travis-ci.org/apidoc.html)
+[![apidoc](https://npmdoc.github.io/node-npmdoc-d3/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-d3_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-d3/build/apidoc.html)
 
-![package-listing](https://npmdoc.github.io/node-npmdoc-d3/build/screen-capture.npmPackageListing.svg)
+![npmPackageListing](https://npmdoc.github.io/node-npmdoc-d3/build/screenCapture.npmPackageListing.svg)
+
+![npmPackageDependencyTree](https://npmdoc.github.io/node-npmdoc-d3/build/screenCapture.npmPackageDependencyTree.svg)
 
 
 
