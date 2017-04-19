@@ -1,24 +1,24 @@
 <svg height="334" width="720" xmlns="http://www.w3.org/2000/svg">
 <rect height="334" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
-<tspan x="10" y="26">  0.  2017-04-07 17:36:47 +0000  1256690 bytes  .</tspan>
-<tspan x="10" y="42">  1.  2017-04-07 17:36:47 +0000   122706 bytes  API.md</tspan>
-<tspan x="10" y="58">  2.  2017-04-07 17:36:47 +0000   139641 bytes  CHANGES.md</tspan>
-<tspan x="10" y="74">  3.  2017-04-07 17:36:47 +0000      656 bytes  ISSUE_TEMPLATE.md</tspan>
-<tspan x="10" y="90">  4.  2017-04-07 17:36:47 +0000     1475 bytes  LICENSE</tspan>
-<tspan x="10" y="106">  5.  2017-04-07 17:36:47 +0000     2293 bytes  README.md</tspan>
-<tspan x="10" y="122">  6.  2017-04-07 17:36:47 +0000   455433 bytes  build/d3.js</tspan>
-<tspan x="10" y="138">  7.  2017-04-07 17:36:47 +0000   216008 bytes  build/d3.min.js</tspan>
-<tspan x="10" y="154">  8.  2017-04-07 17:36:47 +0000     3774 bytes  build/d3.node.js</tspan>
-<tspan x="10" y="170">  9.  2017-04-07 17:36:47 +0000     2366 bytes  build/package.js</tspan>
-<tspan x="10" y="186"> 10.  2017-04-07 17:36:47 +0000     4949 bytes  img/axis-v3.png</tspan>
-<tspan x="10" y="202"> 11.  2017-04-07 17:36:47 +0000     5530 bytes  img/axis-v4.png</tspan>
-<tspan x="10" y="218"> 12.  2017-04-07 17:36:47 +0000   119302 bytes  img/pack-v3.png</tspan>
-<tspan x="10" y="234"> 13.  2017-04-07 17:36:47 +0000   167134 bytes  img/pack-v4.png</tspan>
-<tspan x="10" y="250"> 14.  2017-04-07 17:36:47 +0000     9581 bytes  img/stratify.png</tspan>
-<tspan x="10" y="266"> 15.  2017-04-07 17:36:47 +0000      855 bytes  index.js</tspan>
-<tspan x="10" y="282"> 16.  2017-04-07 17:36:47 +0000     4214 bytes  package.json</tspan>
-<tspan x="10" y="298"> 17.  2017-04-07 17:36:47 +0000      138 bytes  rollup.config.js</tspan>
-<tspan x="10" y="314"> 18.  2017-04-07 17:36:47 +0000      635 bytes  rollup.node.js</tspan>
+<tspan x="10" y="26">  0.  2017-04-19 19:40:23 +0000  1260205 bytes  .</tspan>
+<tspan x="10" y="42">  1.  2017-04-19 19:40:23 +0000   122853 bytes  API.md</tspan>
+<tspan x="10" y="58">  2.  2017-04-19 19:40:23 +0000   139641 bytes  CHANGES.md</tspan>
+<tspan x="10" y="74">  3.  2017-04-19 19:40:23 +0000      656 bytes  ISSUE_TEMPLATE.md</tspan>
+<tspan x="10" y="90">  4.  2017-04-19 19:40:23 +0000     1475 bytes  LICENSE</tspan>
+<tspan x="10" y="106">  5.  2017-04-19 19:40:23 +0000     2293 bytes  README.md</tspan>
+<tspan x="10" y="122">  6.  2017-04-19 19:40:23 +0000   458342 bytes  build/d3.js</tspan>
+<tspan x="10" y="138">  7.  2017-04-19 19:40:23 +0000   216467 bytes  build/d3.min.js</tspan>
+<tspan x="10" y="154">  8.  2017-04-19 19:40:23 +0000     3774 bytes  build/d3.node.js</tspan>
+<tspan x="10" y="170">  9.  2017-04-19 19:40:23 +0000     2366 bytes  build/package.js</tspan>
+<tspan x="10" y="186"> 10.  2017-04-19 19:40:23 +0000     4949 bytes  img/axis-v3.png</tspan>
+<tspan x="10" y="202"> 11.  2017-04-19 19:40:23 +0000     5530 bytes  img/axis-v4.png</tspan>
+<tspan x="10" y="218"> 12.  2017-04-19 19:40:23 +0000   119302 bytes  img/pack-v3.png</tspan>
+<tspan x="10" y="234"> 13.  2017-04-19 19:40:23 +0000   167134 bytes  img/pack-v4.png</tspan>
+<tspan x="10" y="250"> 14.  2017-04-19 19:40:23 +0000     9581 bytes  img/stratify.png</tspan>
+<tspan x="10" y="266"> 15.  2017-04-19 19:40:23 +0000      855 bytes  index.js</tspan>
+<tspan x="10" y="282"> 16.  2017-04-19 19:40:23 +0000     4214 bytes  package.json</tspan>
+<tspan x="10" y="298"> 17.  2017-04-19 19:40:23 +0000      138 bytes  rollup.config.js</tspan>
+<tspan x="10" y="314"> 18.  2017-04-19 19:40:23 +0000      635 bytes  rollup.node.js</tspan>
 </text>
 </svg>

@@ -51,7 +51,7 @@
 
         href="https://d3js.org"
 
-    >d3 (v4.7.4)</a>
+    >d3 (v4.8.0)</a>
 </h1>
 <h4>Data-Driven Documents</h4>
 <div class="apidocSectionDiv"><a
@@ -254,7 +254,7 @@
 
             <a class="apidocElementLiA" href="#apidoc.element.d3.cross">
             function <span class="apidocSignatureSpan">d3.</span>cross
-            <span class="apidocSignatureSpan">(a, b, f)</span>
+            <span class="apidocSignatureSpan">(values0, values1, reduce)</span>
             </a>
 
         </li>
@@ -911,7 +911,7 @@
 
             <a class="apidocElementLiA" href="#apidoc.element.d3.extent">
             function <span class="apidocSignatureSpan">d3.</span>extent
-            <span class="apidocSignatureSpan">(array, f)</span>
+            <span class="apidocSignatureSpan">(values, valueof)</span>
             </a>
 
         </li>
@@ -1874,7 +1874,7 @@
 
             <a class="apidocElementLiA" href="#apidoc.element.d3.max">
             function <span class="apidocSignatureSpan">d3.</span>max
-            <span class="apidocSignatureSpan">(array, f)</span>
+            <span class="apidocSignatureSpan">(values, valueof)</span>
             </a>
 
         </li>
@@ -1883,7 +1883,7 @@
 
             <a class="apidocElementLiA" href="#apidoc.element.d3.mean">
             function <span class="apidocSignatureSpan">d3.</span>mean
-            <span class="apidocSignatureSpan">(array, f)</span>
+            <span class="apidocSignatureSpan">(values, valueof)</span>
             </a>
 
         </li>
@@ -1892,7 +1892,7 @@
 
             <a class="apidocElementLiA" href="#apidoc.element.d3.median">
             function <span class="apidocSignatureSpan">d3.</span>median
-            <span class="apidocSignatureSpan">(array, f)</span>
+            <span class="apidocSignatureSpan">(values, valueof)</span>
             </a>
 
         </li>
@@ -1910,7 +1910,7 @@
 
             <a class="apidocElementLiA" href="#apidoc.element.d3.min">
             function <span class="apidocSignatureSpan">d3.</span>min
-            <span class="apidocSignatureSpan">(array, f)</span>
+            <span class="apidocSignatureSpan">(values, valueof)</span>
             </a>
 
         </li>
@@ -2117,7 +2117,7 @@
 
             <a class="apidocElementLiA" href="#apidoc.element.d3.quantile">
             function <span class="apidocSignatureSpan">d3.</span>quantile
-            <span class="apidocSignatureSpan">(array, p, f)</span>
+            <span class="apidocSignatureSpan">(values, p, valueof)</span>
             </a>
 
         </li>
@@ -2396,7 +2396,7 @@
 
             <a class="apidocElementLiA" href="#apidoc.element.d3.scan">
             function <span class="apidocSignatureSpan">d3.</span>scan
-            <span class="apidocSignatureSpan">(array, compare)</span>
+            <span class="apidocSignatureSpan">(values, compare)</span>
             </a>
 
         </li>
@@ -2585,7 +2585,7 @@
 
             <a class="apidocElementLiA" href="#apidoc.element.d3.sum">
             function <span class="apidocSignatureSpan">d3.</span>sum
-            <span class="apidocSignatureSpan">(array, f)</span>
+            <span class="apidocSignatureSpan">(values, valueof)</span>
             </a>
 
         </li>
@@ -2631,6 +2631,15 @@
             <a class="apidocElementLiA" href="#apidoc.element.d3.thresholdSturges">
             function <span class="apidocSignatureSpan">d3.</span>thresholdSturges
             <span class="apidocSignatureSpan">(values)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.d3.tickIncrement">
+            function <span class="apidocSignatureSpan">d3.</span>tickIncrement
+            <span class="apidocSignatureSpan">(start, stop, count)</span>
             </a>
 
         </li>
@@ -3467,7 +3476,7 @@
 
             <a class="apidocElementLiA" href="#apidoc.element.d3.variance">
             function <span class="apidocSignatureSpan">d3.</span>variance
-            <span class="apidocSignatureSpan">(array, f)</span>
+            <span class="apidocSignatureSpan">(values, valueof)</span>
             </a>
 
         </li>
@@ -9576,15 +9585,28 @@
     <h2>
         <a href="#apidoc.element.d3.cross" id="apidoc.element.d3.cross">
         function <span class="apidocSignatureSpan">d3.</span>cross
-        <span class="apidocSignatureSpan">(a, b, f)</span>
+        <span class="apidocSignatureSpan">(values0, values1, reduce)</span>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">cross = function (a, b, f) {
-  var na = a.length, nb = b.length, c = new Array(na * nb), ia, ib, ic, va;
-  if (f == null) f = pair;
-  for (ia = ic = 0; ia &#x3c; na; ++ia) for (va = a[ia], ib = 0; ib &#x3c; nb; ++ib, ++ic) c[ic] = f(va, b[ib]);
-  return c;
+    <li>description and source-code<pre class="apidocCodePre">cross = function (values0, values1, reduce) {
+  var n0 = values0.length,
+      n1 = values1.length,
+      values = new Array(n0 * n1),
+      i0,
+      i1,
+      i,
+      value0;
+
+  if (reduce == null) reduce = pair;
+
+  for (i0 = i = 0; i0 &#x3c; n0; ++i0) {
+    for (value0 = values0[i0], i1 = 0; i1 &#x3c; n1; ++i1, ++i) {
+      values[i] = reduce(value0, values1[i1]);
+    }
+  }
+
+  return values;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -11009,34 +11031,46 @@ b9;
     <h2>
         <a href="#apidoc.element.d3.extent" id="apidoc.element.d3.extent">
         function <span class="apidocSignatureSpan">d3.</span>extent
-        <span class="apidocSignatureSpan">(array, f)</span>
+        <span class="apidocSignatureSpan">(values, valueof)</span>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">extent = function (array, f) {
-  var i = -1,
-      n = array.length,
-      a,
-      b,
-      c;
+    <li>description and source-code<pre class="apidocCodePre">extent = function (values, valueof) {
+  var n = values.length,
+      i = -1,
+      value,
+      min,
+      max;
 
-  if (f == null) {
-    while (++i &#x3c; n) if ((b = array[i]) != null &#x26;&#x26; b &#x3e;= b) { a = c = b; break; }
-    while (++i &#x3c; n) if ((b = array[i]) != null) {
-      if (a &#x3e; b) a = b;
-      if (c &#x3c; b) c = b;
+  if (valueof == null) {
+    while (++i &#x3c; n) { // Find the first comparable value.
+      if ((value = values[i]) != null &#x26;&#x26; value &#x3e;= value) {
+        min = max = value;
+        while (++i &#x3c; n) { // Compare the remaining values.
+          if ((value = values[i]) != null) {
+            if (min &#x3e; value) min = value;
+            if (max &#x3c; value) max = value;
+          }
+        }
+      }
     }
   }
 
   else {
-    while (++i &#x3c; n) if ((b = f(array[i], i, array)) != null &#x26;&#x26; b &#x3e;= b) { a = c = b; break; }
-    while (++i &#x3c; n) if ((b = f(array[i], i, array)) != null) {
-      if (a &#x3e; b) a = b;
-      if (c &#x3c; b) c = b;
+    while (++i &#x3c; n) { // Find the first comparable value.
+      if ((value = valueof(values[i], i, values)) != null &#x26;&#x26; value &#x3e;= value) {
+        min = max = value;
+        while (++i &#x3c; n) { // Compare the remaining values.
+          if ((value = valueof(values[i], i, values)) != null) {
+            if (min &#x3e; value) min = value;
+            if (max &#x3c; value) max = value;
+          }
+        }
+      }
     }
   }
 
-  return [a, c];
+  return [min, max];
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -11690,7 +11724,7 @@ b9;
   // Compute the prefix and suffix.
   // For SI-prefix, the suffix is lazily computed.
   var prefix = symbol === &#x22;$&#x22; ? currency[0] : symbol === &#x22;#&#x22; &#x26;&#x26; /[boxX]/.test(type) ? &#x22;0&#x22; + type.toLowerCase() : &#x22;&#x22;,
-      suffix = symbol === &#x22;$&#x22; ? currency[1] : /[%p]/.test(type) ? &#x22;%&#x22; : &#x22;&#x22;;
+      suffix = symbol === &#x22;$&#x22; ? currency[1] : /[%p]/.test(type) ? percent : &#x22;&#x22;;
 
   // What format function should we use?
   // Is this an integer type?
@@ -11804,7 +11838,8 @@ b9;
   var group = locale.grouping &#x26;&#x26; locale.thousands ? formatGroup(locale.grouping, locale.thousands) : identity,
       currency = locale.currency,
       decimal = locale.decimal,
-      numerals = locale.numerals ? formatNumerals(locale.numerals) : identity;
+      numerals = locale.numerals ? formatNumerals(locale.numerals) : identity,
+      percent = locale.percent || &#x22;%&#x22;;
 
   function newFormat(specifier) {
     specifier = formatSpecifier(specifier);
@@ -11822,7 +11857,7 @@ b9;
     // Compute the prefix and suffix.
     // For SI-prefix, the suffix is lazily computed.
     var prefix = symbol === &#x22;$&#x22; ? currency[0] : symbol === &#x22;#&#x22; &#x26;&#x26; /[boxX]/.test(type) ? &#x22;0&#x22; + type.toLowerCase() : &#x22;&#x22;,
-        suffix = symbol === &#x22;$&#x22; ? currency[1] : /[%p]/.test(type) ? &#x22;%&#x22; : &#x22;&#x22;;
+        suffix = symbol === &#x22;$&#x22; ? currency[1] : /[%p]/.test(type) ? percent : &#x22;&#x22;;
 
     // What format function should we use?
     // Is this an integer type?
@@ -11900,10 +11935,7 @@ b9;
       return specifier + &#x22;&#x22;;
     };
 
-    return format;
-  }
-
-  function formatPrefix(spe ...</pre></li>
+    retu ...</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -13292,12 +13324,15 @@ _[2] % 360 * radians : 0, recenter()) : [deltaLambda * degrees, deltaPhi * degre
         tz = threshold(values, x0, x1);
 
     // Convert number of thresholds into uniform thresholds.
-    if (!Array.isArray(tz)) tz = ticks(x0, x1, tz);
+    if (!Array.isArray(tz)) {
+      tz = tickStep(x0, x1, tz);
+      tz = range(Math.ceil(x0 / tz) * tz, Math.floor(x1 / tz) * tz, tz); // exclusive
+    }
 
     // Remove any thresholds outside the domain.
     var m = tz.length;
     while (tz[0] &#x3c;= x0) tz.shift(), --m;
-    while (tz[m - 1] &#x3e;= x1) tz.pop(), --m;
+    while (tz[m - 1] &#x3e; x1) tz.pop(), --m;
 
     var bins = new Array(m + 1),
         bin;
@@ -14467,27 +14502,43 @@ _[2] % 360 * radians : 0, recenter()) : [deltaLambda * degrees, deltaPhi * degre
     <h2>
         <a href="#apidoc.element.d3.max" id="apidoc.element.d3.max">
         function <span class="apidocSignatureSpan">d3.</span>max
-        <span class="apidocSignatureSpan">(array, f)</span>
+        <span class="apidocSignatureSpan">(values, valueof)</span>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">max = function (array, f) {
-  var i = -1,
-      n = array.length,
-      a,
-      b;
+    <li>description and source-code<pre class="apidocCodePre">max = function (values, valueof) {
+  var n = values.length,
+      i = -1,
+      value,
+      max;
 
-  if (f == null) {
-    while (++i &#x3c; n) if ((b = array[i]) != null &#x26;&#x26; b &#x3e;= b) { a = b; break; }
-    while (++i &#x3c; n) if ((b = array[i]) != null &#x26;&#x26; b &#x3e; a) a = b;
+  if (valueof == null) {
+    while (++i &#x3c; n) { // Find the first comparable value.
+      if ((value = values[i]) != null &#x26;&#x26; value &#x3e;= value) {
+        max = value;
+        while (++i &#x3c; n) { // Compare the remaining values.
+          if ((value = values[i]) != null &#x26;&#x26; value &#x3e; max) {
+            max = value;
+          }
+        }
+      }
+    }
   }
 
   else {
-    while (++i &#x3c; n) if ((b = f(array[i], i, array)) != null &#x26;&#x26; b &#x3e;= b) { a = b; break; }
-    while (++i &#x3c; n) if ((b = f(array[i], i, array)) != null &#x26;&#x26; b &#x3e; a) a = b;
+    while (++i &#x3c; n) { // Find the first comparable value.
+      if ((value = valueof(values[i], i, values)) != null &#x26;&#x26; value &#x3e;= value) {
+        max = value;
+        while (++i &#x3c; n) { // Compare the remaining values.
+          if ((value = valueof(values[i], i, values)) != null &#x26;&#x26; value &#x3e; max) {
+            max = value;
+          }
+        }
+      }
+    }
   }
 
-  return a;
+  return max;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -14497,26 +14548,32 @@ _[2] % 360 * radians : 0, recenter()) : [deltaLambda * degrees, deltaPhi * degre
     <h2>
         <a href="#apidoc.element.d3.mean" id="apidoc.element.d3.mean">
         function <span class="apidocSignatureSpan">d3.</span>mean
-        <span class="apidocSignatureSpan">(array, f)</span>
+        <span class="apidocSignatureSpan">(values, valueof)</span>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">mean = function (array, f) {
-  var s = 0,
-      n = array.length,
-      a,
+    <li>description and source-code<pre class="apidocCodePre">mean = function (values, valueof) {
+  var n = values.length,
+      m = n,
       i = -1,
-      j = n;
+      value,
+      sum = 0;
 
-  if (f == null) {
-    while (++i &#x3c; n) if (!isNaN(a = number(array[i]))) s += a; else --j;
+  if (valueof == null) {
+    while (++i &#x3c; n) {
+      if (!isNaN(value = number(values[i]))) sum += value;
+      else --m;
+    }
   }
 
   else {
-    while (++i &#x3c; n) if (!isNaN(a = number(f(array[i], i, array)))) s += a; else --j;
+    while (++i &#x3c; n) {
+      if (!isNaN(value = number(valueof(values[i], i, values)))) sum += value;
+      else --m;
+    }
   }
 
-  if (j) return s / j;
+  if (m) return sum / m;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -14526,22 +14583,30 @@ _[2] % 360 * radians : 0, recenter()) : [deltaLambda * degrees, deltaPhi * degre
     <h2>
         <a href="#apidoc.element.d3.median" id="apidoc.element.d3.median">
         function <span class="apidocSignatureSpan">d3.</span>median
-        <span class="apidocSignatureSpan">(array, f)</span>
+        <span class="apidocSignatureSpan">(values, valueof)</span>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">median = function (array, f) {
-  var numbers = [],
-      n = array.length,
-      a,
-      i = -1;
+    <li>description and source-code<pre class="apidocCodePre">median = function (values, valueof) {
+  var n = values.length,
+      i = -1,
+      value,
+      numbers = [];
 
-  if (f == null) {
-    while (++i &#x3c; n) if (!isNaN(a = number(array[i]))) numbers.push(a);
+  if (valueof == null) {
+    while (++i &#x3c; n) {
+      if (!isNaN(value = number(values[i]))) {
+        numbers.push(value);
+      }
+    }
   }
 
   else {
-    while (++i &#x3c; n) if (!isNaN(a = number(f(array[i], i, array)))) numbers.push(a);
+    while (++i &#x3c; n) {
+      if (!isNaN(value = number(valueof(values[i], i, values)))) {
+        numbers.push(value);
+      }
+    }
   }
 
   return quantile(numbers.sort(ascending), 0.5);
@@ -14587,27 +14652,43 @@ _[2] % 360 * radians : 0, recenter()) : [deltaLambda * degrees, deltaPhi * degre
     <h2>
         <a href="#apidoc.element.d3.min" id="apidoc.element.d3.min">
         function <span class="apidocSignatureSpan">d3.</span>min
-        <span class="apidocSignatureSpan">(array, f)</span>
+        <span class="apidocSignatureSpan">(values, valueof)</span>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">min = function (array, f) {
-  var i = -1,
-      n = array.length,
-      a,
-      b;
+    <li>description and source-code<pre class="apidocCodePre">min = function (values, valueof) {
+  var n = values.length,
+      i = -1,
+      value,
+      min;
 
-  if (f == null) {
-    while (++i &#x3c; n) if ((b = array[i]) != null &#x26;&#x26; b &#x3e;= b) { a = b; break; }
-    while (++i &#x3c; n) if ((b = array[i]) != null &#x26;&#x26; a &#x3e; b) a = b;
+  if (valueof == null) {
+    while (++i &#x3c; n) { // Find the first comparable value.
+      if ((value = values[i]) != null &#x26;&#x26; value &#x3e;= value) {
+        min = value;
+        while (++i &#x3c; n) { // Compare the remaining values.
+          if ((value = values[i]) != null &#x26;&#x26; min &#x3e; value) {
+            min = value;
+          }
+        }
+      }
+    }
   }
 
   else {
-    while (++i &#x3c; n) if ((b = f(array[i], i, array)) != null &#x26;&#x26; b &#x3e;= b) { a = b; break; }
-    while (++i &#x3c; n) if ((b = f(array[i], i, array)) != null &#x26;&#x26; a &#x3e; b) a = b;
+    while (++i &#x3c; n) { // Find the first comparable value.
+      if ((value = valueof(values[i], i, values)) != null &#x26;&#x26; value &#x3e;= value) {
+        min = value;
+        while (++i &#x3c; n) { // Compare the remaining values.
+          if ((value = valueof(values[i], i, values)) != null &#x26;&#x26; min &#x3e; value) {
+            min = value;
+          }
+        }
+      }
+    }
   }
 
-  return a;
+  return min;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -15248,21 +15329,21 @@ _[2] % 360 * radians : 0, recenter()) : [deltaLambda * degrees, deltaPhi * degre
     <h2>
         <a href="#apidoc.element.d3.quantile" id="apidoc.element.d3.quantile">
         function <span class="apidocSignatureSpan">d3.</span>quantile
-        <span class="apidocSignatureSpan">(array, p, f)</span>
+        <span class="apidocSignatureSpan">(values, p, valueof)</span>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">quantile = function (array, p, f) {
-  if (f == null) f = number;
-  if (!(n = array.length)) return;
-  if ((p = +p) &#x3c;= 0 || n &#x3c; 2) return +f(array[0], 0, array);
-  if (p &#x3e;= 1) return +f(array[n - 1], n - 1, array);
+    <li>description and source-code<pre class="apidocCodePre">quantile = function (values, p, valueof) {
+  if (valueof == null) valueof = number;
+  if (!(n = values.length)) return;
+  if ((p = +p) &#x3c;= 0 || n &#x3c; 2) return +valueof(values[0], 0, values);
+  if (p &#x3e;= 1) return +valueof(values[n - 1], n - 1, values);
   var n,
-      h = (n - 1) * p,
-      i = Math.floor(h),
-      a = +f(array[i], i, array),
-      b = +f(array[i + 1], i + 1, array);
-  return a + (b - a) * (h - i);
+      i = (n - 1) * p,
+      i0 = Math.floor(i),
+      value0 = +valueof(values[i0], i0, values),
+      value1 = +valueof(values[i0 + 1], i0 + 1, values);
+  return value0 + (value1 - value0) * (i - i0);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -16371,21 +16452,25 @@ _[2] % 360 * radians : 0, recenter()) : [deltaLambda * degrees, deltaPhi * degre
     <h2>
         <a href="#apidoc.element.d3.scan" id="apidoc.element.d3.scan">
         function <span class="apidocSignatureSpan">d3.</span>scan
-        <span class="apidocSignatureSpan">(array, compare)</span>
+        <span class="apidocSignatureSpan">(values, compare)</span>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">scan = function (array, compare) {
-  if (!(n = array.length)) return;
-  var i = 0,
-      n,
+    <li>description and source-code<pre class="apidocCodePre">scan = function (values, compare) {
+  if (!(n = values.length)) return;
+  var n,
+      i = 0,
       j = 0,
       xi,
-      xj = array[j];
+      xj = values[j];
 
-  if (!compare) compare = ascending;
+  if (compare == null) compare = ascending;
 
-  while (++i &#x3c; n) if (compare(xi = array[i], xj) &#x3c; 0 || compare(xj, xj) !== 0) xj = xi, j = i;
+  while (++i &#x3c; n) {
+    if (compare(xi = values[i], xj) &#x3c; 0 || compare(xj, xj) !== 0) {
+      xj = xi, j = i;
+    }
+  }
 
   if (compare(xj, xj) === 0) return j;
 }</pre></li>
@@ -16887,25 +16972,29 @@ _[2] % 360 * radians : 0, recenter()) : [deltaLambda * degrees, deltaPhi * degre
     <h2>
         <a href="#apidoc.element.d3.sum" id="apidoc.element.d3.sum">
         function <span class="apidocSignatureSpan">d3.</span>sum
-        <span class="apidocSignatureSpan">(array, f)</span>
+        <span class="apidocSignatureSpan">(values, valueof)</span>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">sum = function (array, f) {
-  var s = 0,
-      n = array.length,
-      a,
-      i = -1;
+    <li>description and source-code<pre class="apidocCodePre">sum = function (values, valueof) {
+  var n = values.length,
+      i = -1,
+      value,
+      sum = 0;
 
-  if (f == null) {
-    while (++i &#x3c; n) if (a = +array[i]) s += a; // Note: zero and null are equivalent.
+  if (valueof == null) {
+    while (++i &#x3c; n) {
+      if (value = +values[i]) sum += value; // Note: zero and null are equivalent.
+    }
   }
 
   else {
-    while (++i &#x3c; n) if (a = +f(array[i], i, array)) s += a;
+    while (++i &#x3c; n) {
+      if (value = +valueof(values[i], i, values)) sum += value;
+    }
   }
 
-  return s;
+  return sum;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -17017,6 +17106,26 @@ _[2] % 360 * radians : 0, recenter()) : [deltaLambda * degrees, deltaPhi * degre
 
 
     <h2>
+        <a href="#apidoc.element.d3.tickIncrement" id="apidoc.element.d3.tickIncrement">
+        function <span class="apidocSignatureSpan">d3.</span>tickIncrement
+        <span class="apidocSignatureSpan">(start, stop, count)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function tickIncrement(start, stop, count) {
+  var step = (stop - start) / Math.max(0, count),
+      power = Math.floor(Math.log(step) / Math.LN10),
+      error = step / Math.pow(10, power);
+  return power &#x3e;= 0
+      ? (error &#x3e;= e10 ? 10 : error &#x3e;= e5 ? 5 : error &#x3e;= e2 ? 2 : 1) * Math.pow(10, power)
+      : -Math.pow(10, -power) / (error &#x3e;= e10 ? 10 : error &#x3e;= e5 ? 5 : error &#x3e;= e2 ? 2 : 1);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
         <a href="#apidoc.element.d3.tickStep" id="apidoc.element.d3.tickStep">
         function <span class="apidocSignatureSpan">d3.</span>tickStep
         <span class="apidocSignatureSpan">(start, stop, count)</span>
@@ -17045,12 +17154,31 @@ _[2] % 360 * radians : 0, recenter()) : [deltaLambda * degrees, deltaPhi * degre
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">ticks = function (start, stop, count) {
-  var step = tickStep(start, stop, count);
-  return range(
-    Math.ceil(start / step) * step,
-    Math.floor(stop / step) * step + step / 2, // inclusive
-    step
-  );
+  var reverse = stop &#x3c; start,
+      i = -1,
+      n,
+      ticks,
+      step;
+
+  if (reverse) n = start, start = stop, stop = n;
+
+  if ((step = tickIncrement(start, stop, count)) === 0 || !isFinite(step)) return [];
+
+  if (step &#x3e; 0) {
+    start = Math.ceil(start / step);
+    stop = Math.floor(stop / step);
+    ticks = new Array(n = Math.ceil(stop - start + 1));
+    while (++i &#x3c; n) ticks[i] = (start + i) * step;
+  } else {
+    start = Math.floor(start * step);
+    stop = Math.ceil(stop * step);
+    ticks = new Array(n = Math.ceil(start - stop + 1));
+    while (++i &#x3c; n) ticks[i] = (start - i) / step;
+  }
+
+  if (reverse) ticks.reverse();
+
+  return ticks;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -19175,40 +19303,40 @@ _[2] % 360 * radians : 0, recenter()) : [deltaLambda * degrees, deltaPhi * degre
     <h2>
         <a href="#apidoc.element.d3.variance" id="apidoc.element.d3.variance">
         function <span class="apidocSignatureSpan">d3.</span>variance
-        <span class="apidocSignatureSpan">(array, f)</span>
+        <span class="apidocSignatureSpan">(values, valueof)</span>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">variance = function (array, f) {
-  var n = array.length,
+    <li>description and source-code<pre class="apidocCodePre">variance = function (values, valueof) {
+  var n = values.length,
       m = 0,
-      a,
-      d,
-      s = 0,
       i = -1,
-      j = 0;
+      mean = 0,
+      value,
+      delta,
+      sum = 0;
 
-  if (f == null) {
+  if (valueof == null) {
     while (++i &#x3c; n) {
-      if (!isNaN(a = number(array[i]))) {
-        d = a - m;
-        m += d / ++j;
-        s += d * (a - m);
+      if (!isNaN(value = number(values[i]))) {
+        delta = value - mean;
+        mean += delta / ++m;
+        sum += delta * (value - mean);
       }
     }
   }
 
   else {
     while (++i &#x3c; n) {
-      if (!isNaN(a = number(f(array[i], i, array)))) {
-        d = a - m;
-        m += d / ++j;
-        s += d * (a - m);
+      if (!isNaN(value = number(valueof(values[i], i, values)))) {
+        delta = value - mean;
+        mean += delta / ++m;
+        sum += delta * (value - mean);
       }
     }
   }
 
-  if (j &#x3e; 1) return s / (j - 1);
+  if (m &#x3e; 1) return sum / (m - 1);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
